@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>scroller</title>
+        <style>
+            .media-hover { position: relative; display: inline-block; }
+            .media-hover img, .media-hover video { display: block; width: auto; height: 570px; max-width: 100%; }
+            .media-row { display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; padding: 12px; }
+            .media-hover .hover-overlay {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-weight: 700;
+                background: rgba(255, 183, 247, 0.542);
+                opacity: 0;
+                transition: opacity 160ms ease-in-out;
+                user-select: none;
+                pointer-events: none;
+            }
+            .media-hover:hover .hover-overlay { opacity: 1}
+            .hover-overlay .label { padding: 6px 10px; border-radius: 4px; background: rgba(35, 93, 37, 0.716); font-family: 'Elegant Bloom', sans-serif; font-size: 20px; }
+            .img:hover { transform: translateY(-4px) scale(1.03);}
+            @font-face {
+                font-family: 'Elegant Bloom';
+                src: url('fonts/Elegant Bloom.otf') format('opentype');
+                font-weight: normal;
+                font-style: normal;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="media-row">
+            <a href="https://theunsentproject.com/posts/13771217" target="_blank">
+                <div class="media-hover">
+                    <span class="hover-overlay"><span class="label">Click me</span></span>
+                    <img src="img/0001.png">
+                </div>
+            </a>
+            <a href="verysecrethtmlname.html">
+                <div class="media-hover">
+                    <span class="hover-overlay"><span class="label">Click me</span></span>
+                    <video autoplay loop muted> 
+                        <source src="img/video.MP4" type="video/mp4">
+                    </video>
+                </div>
+            </a>
+            <a href="62x6921x1420secret626262.html">
+                <div class="media-hover">
+                    <span class="hover-overlay"><span class="label">Click me</span></span>
+                    <video autoplay loop muted> 
+                        <source src="img/video 2.MP4" type="video/mp4">
+                    </video>
+                </div>
+            </a>
+        </div>
+    </body>
+</html>
