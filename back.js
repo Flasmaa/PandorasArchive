@@ -14,7 +14,7 @@ const backHtml = `
    @media (max-width: 480px) { .fixed-back { width: 48px; height: 48px; top: 8px; left: 8px; } }
 </style>
 <a href="scroller.html" class="fixed-back" aria-label="Back" title="Back">
-  <img src="img/back.svg" alt="Back" onerror="this.onerror=null;this.src='img/back.png'">
+  <img src="elements/back.svg" alt="Back" onerror="this.onerror=null;this.src='elements/back.png'">
 </a>
 `;
 
