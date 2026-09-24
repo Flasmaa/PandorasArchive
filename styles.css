@@ -141,7 +141,7 @@ iframe {
   z-index: 0;
 }
 
-#page-body, body > *:not(.bg-blur-overlay) {
+#page-body, body > *:not(.bg-blur-overlay):not(.giftbox) {
   position: relative;
   z-index: 1;
 }

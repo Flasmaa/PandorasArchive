@@ -1,25 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <link rel="icon" type="image/x-icon" href="logo.ico">
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        window.onload = function() {
-            var body = document.getElementById('page-body');
-            body.style.backgroundImage = "url('img/bg100826.jpg')";
-            body.style.backgroundSize = "cover";
-            body.style.backgroundPosition = 'center 0';
-        };
-        window.addEventListener('scroll', function() {
-            var body = document.getElementById('page-body');
-            var speed = 0.5 ; 
-            body.style.backgroundPosition = 'center ' + (window.scrollY * speed) + 'px';
-        });
-    </script>
-    <style>
-        @keyframes giftbox-start {
-            0% { top: -200%; }
-            100% { top: 130%; }
-        }
+    <head>
+        <link rel="icon" type="image/x-icon" href="logo.ico">
+        <link rel="stylesheet" href="styles.css">
+        <title>100826</title>
+        <style>
         @keyframes giftbox-hover {
             0%, 100% { transform: rotate(0deg); }
             25% { transform: rotate(-2deg); }
@@ -27,28 +12,40 @@
         }
         @keyframes giftbox-open-top {
             0% { transform: rotate(0deg); }
-            90% { opacity: 1; }
-            100% { transform: translateY(-500px) rotate(0deg); }
+            8% { scale: 145%; }
+            90% { scale: 145%; opacity: 1; }
+            100% { scale: 145%; transform: translateY(-500px) rotate(0deg); }
         }
         @keyframes giftbox-open-box {
             0% { transform: rotate(0deg); }
-            90% { opacity: 1; }
-            100% { opacity: 0; }
+            10% { scale: 160%; }
+            90% { scale: 160%; opacity: 1; }
+            100% { scale: 160%; opacity: 0; }
+        }
+        @keyframes giftbox-start {
+            0% { transform: translate(-50%, calc(-50% - 100vh)); }
+            100% { transform: translate(-50%, -50%); }
         }
         .giftbox {
             position: fixed;
+            top: 50%;
+            left: 49%;
             width: 175px;
             height: 175px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             animation: giftbox-start 1s ease-out forwards;
         }
         .giftbox-inner {
             position: relative;
             width: 175px;
             height: 175px;
-            transform-origin: center center;
+        }
+        .giftbox img {
+            position: absolute;
+            width: 175px;
+            height: 175px;
+        }
+        .giftbox .box {
+            transform: translateX(-1px);
         }
         .giftbox:hover .giftbox-inner {
             animation: giftbox-hover 0.1s ease-in-out infinite;
@@ -57,25 +54,19 @@
             animation: none;
         }
         .giftbox.is-open .top {
-            animation: giftbox-open-top 1s ease-in-out forwards;
+            animation: giftbox-open-top 1.8s ease-in forwards;
         }
         .giftbox.is-open .box {
-            animation: giftbox-open-box 1s ease-in-out forwards;
+            animation: giftbox-open-box 2s ease-in-out forwards;
         }
-    </style>
-    <head>
-        <title>100826</title>
+        </style>
     </head>
     <body>
-        <!--fix this pag ipupublish na-->
-        <script src="backa.js" defer></script>
-        <!---->
         <div class="bg-blur-overlay" aria-hidden="true"></div>
-        <br><br><br>
         <div class="giftbox">
             <div class="giftbox-inner">
-                <img class="top" src="elements/giftbox100826/top.svg" style="position: absolute; width: 175px; height: 175px;"></img>
-                <img class="box" src="elements/giftbox100826/box.svg" style="position: absolute; width: 175px; height: 175px; transform: translateX(-1px)"></img>
+                <img class="top" src="elements/giftbox100826/top.png" alt="">
+                <img class="box" src="elements/giftbox100826/box.png" alt="">
             </div>
         </div>
         <script>
