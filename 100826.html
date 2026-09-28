@@ -12,14 +12,14 @@
         }
         @keyframes giftbox-open-top {
             0% { transform: rotate(0deg); scale: 100%; opacity: 1; }
-            10% { scale: 145%; }
-            50% { scale: 145%; opacity: 1; transform: translateY(0);}
-            80% { scale: 145%; transform: translateY(-100vh) rotate(0deg); }
-            100% { scale: 145%; opacity: 0; transform: translateY(-100vh);}
+            10% { scale: 145%; transform: translateX(1.54px); }
+            50% { scale: 145%; opacity: 1; transform: translateY(0) translateX(1.45px); }
+            80% { scale: 145%; transform: translateY(-100vh) translateX(1.45px) rotate(0deg); }
+            100% { scale: 145%; opacity: 0; transform: translateY(-100vh) translateX(1.45px);}
         }
         @keyframes giftbox-open-box {
             0% { transform: rotate(0deg); scale: 100%; opacity: 1; }
-            10% { scale: 160%; }
+            10% { scale: 160%; transform:; }
             50% { scale: 160%; opacity: 1; transform: translateY(0); }
             80.5% { scale: 160%; opacity: 0; transform: translateY(0); }
             100% { scale: 160%; opacity: 0; transform: translateY(-100vh); }
@@ -72,7 +72,7 @@
         <div class="bg-blur-overlay" aria-hidden="true"></div>
         <div class="giftbox" style="z-index: 3;">
             <div class="giftbox-inner">
-                <img class="top" src="elements/giftbox100826/top.png" alt="">
+                <img class="top" src="elements/giftbox100826/top.png" alt="" style="transform: translateX(1px);">
                 <img class="box" src="elements/giftbox100826/box.png" alt="">
             </div>
         </div>
