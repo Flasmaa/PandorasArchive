@@ -1,0 +1,180 @@
+@keyframes giftbox-hover {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    20% { transform: rotate(-2deg) scale(1.01); }
+    40% { transform: rotate(2.5deg) scale(1.02); }
+    60% { transform: rotate(-1.5deg) scale(1.015); }
+    80% { transform: rotate(1deg) scale(1.01); }
+}
+@keyframes giftbox-open-top {
+    0% { opacity: 1; transform: scale(1.75) translateX(1px); }
+    45% { opacity: 1; transform: translateY(0) scale(1.75) translateX(1px); }
+    72% { opacity: 1; transform: translateY(-100vh) scale(1.75) translateX(1px); }
+    100% { opacity: 0; transform: translateY(-100vh) scale(1.75) translateX(1px); }
+}
+@keyframes giftbox-open-box {
+    0% { opacity: 1; transform: scale(1.9); }
+    45% { opacity: 1; transform: translateY(0) scale(1.9); }
+    72% { opacity: 0; transform: translateY(0) scale(1.9); }
+    100% { opacity: 0; transform: translateY(-100vh) scale(1.9); }
+}
+@keyframes giftbox-start {
+    0% { transform: translate(-50%, calc(-50% - 100vh)); }
+    100% { transform: translate(-50%, -50%); }
+}
+@keyframes main-open {
+    0% { opacity: 0; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes cover-open {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-120vh); }
+}
+
+.giftbox .top,
+.giftbox .box {
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+    will-change: transform;
+}
+.giftbox .box {
+    transform: scale(1);
+}
+
+.giftbox.state-one .top {
+    transform: translateX(0.75px) scale(1.12);
+}
+.giftbox.state-one .box {
+    transform: scale(1.24);
+}
+.giftbox.state-two .top {
+    transform: translateX(2px) scale(1.28);
+}
+.giftbox.state-two .box {
+    transform: scale(1.46);
+}
+.giftbox.state-three .top {
+    transform: translateX(1px) scale(1.52);
+}
+.giftbox.state-three .box {
+    transform: scale(1.72);
+}
+.giftbox.state-four .top {
+    transform: translateX(1px) scale(1.75);
+}
+.giftbox.state-four .box {
+    transform: scale(1.9);
+}
+.giftbox {
+    position: fixed;
+    top: 50%;
+    left: 49%;
+    width: 175px;
+    height: 175px;
+    z-index: 3;
+    animation: giftbox-start 1s ease-out forwards;
+    user-select: none;
+    transform-origin: center;
+}
+.giftbox.is-open {
+    pointer-events: none;
+}
+.giftbox-inner {
+    position: relative;
+    width: 175px;
+    height: 175px;
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
+.giftbox img {
+    position: absolute;
+    width: 175px;
+    height: 175px;
+    transform-origin: center;
+    transition: transform 0.45s ease, opacity 0.45s ease;
+}
+.giftbox:not(.is-open):not(.state-four):hover .giftbox-inner {
+    animation: giftbox-hover 1.4s ease-in-out infinite;
+    animation-fill-mode: both;
+}
+.giftbox.state-three:not(.is-open):hover .giftbox-inner {
+    animation: giftbox-hover 1.2s ease-in-out 1;
+    animation-fill-mode: both;
+}
+.giftbox.state-four:not(.is-open):hover .giftbox-inner,
+.giftbox.is-open .giftbox-inner,
+.giftbox.is-open:hover .giftbox-inner {
+    animation: none;
+}
+.giftbox.is-open .top {
+    animation: giftbox-open-top 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.05s;
+}
+.giftbox.is-open .box {
+    animation: giftbox-open-box 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.05s;
+}
+.main-open {
+    animation: main-open 5s forwards;
+}
+.cover-open {
+    animation: cover-open 5s forwards;
+    user-select: none;
+}
+.giftbox.state-four .top {
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+    transform: scale(1.75) translateX(1px);
+}
+.giftbox.state-four .box {
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+    transform: scale(1.9);
+}
+
+#main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    opacity: 0;
+    z-index: 1;
+}
+
+#main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    opacity: 0;
+    z-index: 1;
+}
+
+#main > img {
+    position: relative;
+    display: block;
+    width: min(80vw, 900px);
+    height: auto;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+#main > img {
+    position: relative;
+    display: block;
+    width: min(80vw, 900px);
+    height: auto;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+#cover {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
