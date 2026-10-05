@@ -12,6 +12,11 @@
   font-style: normal;
 }
 
+html,
+body {
+  background: transparent;
+}
+
 body {
   margin: 0;
 }

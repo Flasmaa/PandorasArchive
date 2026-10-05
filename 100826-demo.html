@@ -3,7 +3,7 @@
     <head>
         <link rel="icon" type="image/x-icon" href="logo.ico">
         <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="100826-demo.css">
+        <link rel="stylesheet" href="100826.css">
         <script>
             window.onload = function() {
                 var body = document.getElementById('page-body');
@@ -57,14 +57,16 @@
             }
             .flower-item.is-picked {
                 pointer-events: none;
-                animation: flower-pick 0.9s ease-in-out forwards;
+                animation: flower-pick 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
                 z-index: 30;
             }
+            .flower-item.is-letter-open-hidden {
+                visibility: hidden;
+            }
             @keyframes flower-pick {
-                0% { transform: translate(0, 0) scale(1) rotate(var(--pick-rot, 0deg)); opacity: 1; }
-                28% { transform: translate(-10px, -20px) rotate(var(--pick-rot, 0deg)); opacity: 1; }
-                62% { transform: translate(-30px, -120px) rotate(calc(var(--pick-rot, 0deg) + 12deg)); opacity: 1; }
-                100% { transform: translate(-55px, -170px) rotate(calc(var(--pick-rot, 0deg) + 16deg)); opacity: 0; }
+                0% { transform: translate(0, 0) rotate(var(--pick-rot, 0deg)) scale(1); opacity: 1; }
+                75% { opacity: 1; }
+                100% { transform: translate(var(--pick-x), var(--pick-y)) rotate(var(--pick-rot, 0deg)); opacity: 0; }
             }
             .letter-overlay {
                 position: fixed !important;
@@ -92,18 +94,19 @@
                 position: relative;
                 width: 800px;
                 height: 500px;
-                background: #fffaf3;
+                background: url(img/100826frame.png) no-repeat center center;
                 border: none;
-                border-radius: 0;
+                border-radius: 16px;
                 box-shadow: none;
                 overflow: visible;
                 opacity: 0;
-                transform: translateY(18px) scale(0.97);
+                transform: translate(-225px, 18px) scale(0.97);
                 transition: opacity 0.36s ease, transform 0.36s cubic-bezier(0.2, 0.75, 0.3, 1);
+                filter: drop-shadow(3px 6px 5px rgba(0, 0, 0, 0.25));
             }
             .letter-overlay.visible .letter-panel {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translate(-220px, 0) scale(1);
             }
             .letter-flower-preview {
                 position: absolute;
@@ -125,11 +128,11 @@
                 transform: translate(0, 0) rotate(18deg) scale(1);
             }
             .letter-bg {
-                width: 70%;
-                height: 75%;
-                background: #fffaf3;
+                width: 100%;
+                height: 100%;
+                background: #fffaf300;
                 border: none;
-                border-radius: 0;
+                border-radius: 16px;
                 box-shadow: none;
                 overflow: hidden;
             }
@@ -148,13 +151,36 @@
             }
             .letter-back-button img { width: 100%; height: auto; display: block; pointer-events: none; }
             .letter-back-button:hover { transform: translateY(-4px) scale(1.03); }
-            @media (max-width: 480px) { .letter-back-button { width: 48px; height: 48px; top: 8px; left: 8px; } }
+            @media (max-width: 480px) { .letter-back-button { width: 48px; height: 48px; top: 200px; left: 300px; } }
             .letter-embed {
                 width: 100%;
                 height: 100%;
                 border: 0;
-                background: white;
+                background: transparent;
                 display: block;
+            }
+            .letter-photo-frame {
+                position: absolute;
+                top: 50%;
+                left: calc(100% + 24px);
+                height: fit-content;
+                width: max-content;
+                transform: translateY(-50%);
+                border: 15px solid transparent;
+                border-image-source: url('100826/img-bd.png');
+                border-image-slice: 80;
+                border-image-width: 15px;
+                border-image-repeat: stretch;
+            }
+            .letter-photo-frame[hidden] {
+                display: none;
+            }
+            .letter-photo-frame img {
+                display: block;
+                max-height: 500px;
+                max-width: 450px;
+                height: auto;
+                width: auto;
             }
         </style>
         <title>100826</title>
@@ -177,33 +203,33 @@
             <div style="position: relative; display: inline-block;">
                 <div id="fl" class="fl" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 4; pointer-events: auto; transform: translateY(px);">
                     <div id="flowerRow1" class="florwerrow1" style="position: absolute; top: 0px; left: 50%; transform: translateX(-50%); width: 720px; height: 170px; display: flex; align-items: flex-end; justify-content: center; gap: 35px;">
-                        <img id="flowerItem1" class="flower-item" src="100826/test.jpg" alt="" style="width: 110px; transform: rotate(-24deg) translateY(90px); margin-right:10px; --pick-rot:-24deg;">
-                        <img id="flowerItem2" class="flower-item" src="100826/test2.jpg" alt="" style="width: 110px; transform: rotate(-10deg) translateY(35px); --pick-rot:-10deg;">
-                        <img id="flowerItem3" class="flower-item" src="100826/test2.jpg" alt="" style="width: 110px; transform: rotate(0deg); --pick-rot:0deg;">
-                        <img id="flowerItem4" class="flower-item" src="100826/test2.jpg" alt="" style="width: 110px; transform: rotate(12deg) translateY(35px); --pick-rot:12deg;">
-                        <img id="flowerItem5" class="flower-item" src="100826/test.jpg" alt="" style="width: 110px; transform: rotate(24deg) translateY(90px); margin-left:10px; --pick-rot:24deg;">
+                        <img id="flowerItem1" class="flower-item" src="100826/von.png" alt="" style="width: 110px; transform: rotate(-24deg) translateY(90px); margin-right:10px; --pick-rot:-24deg;">
+                        <img id="flowerItem2" class="flower-item" src="100826/chloe.png" alt="" style="width: 110px; transform: rotate(-10deg) translateY(35px); --pick-rot:-10deg;">
+                        <img id="flowerItem3" class="flower-item" src="100826/yran.jpg" alt="" style="width: 110px; transform: rotate(0deg); --pick-rot:0deg;">
+                        <img id="flowerItem4" class="flower-item" src="100826/teo.jpg" alt="" style="width: 110px; transform: rotate(12deg) translateY(35px); --pick-rot:12deg;">
+                        <img id="flowerItem5" class="flower-item" src="100826/leira.jpg" alt="" style="width: 110px; transform: rotate(24deg) translateY(90px); margin-left:10px; --pick-rot:24deg;">
                     </div>
 
                     <div id="flowerRow2" class="florwerrow2" style="position: absolute; top: 120px; left: 50%; transform: translateX(-50%); width: 620px; height: 140px; display: flex; align-items: flex-end; justify-content: center; gap: 18px;">
-                        <img id="flowerItem6" class="flower-item" src="100826/test.jpg" alt="" style="width: 110px; transform: rotate(-24deg) translateY(50px); --pick-rot:-24deg;">
-                        <img id="flowerItem7" class="flower-item" src="100826/test2.jpg" alt="" style="width: 110px; transform: rotate(-10deg) translateY(-5px); --pick-rot:-10deg;">
-                        <img id="flowerItem8" class="flower-item" src="100826/test2.jpg" alt="" style="width: 110px; transform: rotate(10deg) translateY(-5px); --pick-rot:10deg;">
-                        <img id="flowerItem9" class="flower-item" src="100826/test.jpg" alt="" style="width: 110px; transform: rotate(24deg) translateY(50px); --pick-rot:24deg;">
+                        <img id="flowerItem6" class="flower-item" src="100826/rhian.jpg" alt="" style="width: 110px; transform: rotate(-24deg) translateY(50px); --pick-rot:-24deg;">
+                        <img id="flowerItem7" class="flower-item" src="100826/liana.jpg" alt="" style="width: 110px; transform: rotate(-10deg) translateY(-5px); --pick-rot:-10deg;">
+                        <img id="flowerItem8" class="flower-item" src="100826/jeann.jpg" alt="" style="width: 110px; transform: rotate(10deg) translateY(-5px); --pick-rot:10deg;">
+                        <img id="flowerItem9" class="flower-item" src="100826/king.jpg" alt="" style="width: 110px; transform: rotate(24deg) translateY(50px); --pick-rot:24deg;">
                     </div>
                     
-                    <div id="flowerRow3" class="florwerrow3" style="position: absolute; top: 220px; left: 50%; transform: translateX(-50%); width: 500px; height: 120px; display: flex; align-items: flex-end; justify-content: center; gap: 20px;">
-                        <img id="flowerItem10" class="flower-item" src="100826/test.jpg" alt="" style="width: 110px; transform: rotate(-18deg) translateY(35px); --pick-rot:-18deg;">
-                        <img id="flowerItem11" class="flower-item" src="100826/test2.jpg" alt="" style="width: 110px; transform: rotate(0deg) translateY(-20px); --pick-rot:0deg;">
-                        <img id="flowerItem12" class="flower-item" src="100826/test.jpg" alt="" style="width: 110px; transform: rotate(18deg) translateY(35px); --pick-rot:18deg;">
+                    <div id="flowerRow3" class="florwerrow3" style="position: absolute; top: 220px; left: 50%; transform: translateX(-50%); width: 500px; height: 120px; display: flex; align-items: flex-end; justify-content: center; gap: 60px;">
+                        <img id="flowerItem10" class="flower-item" src="100826/dashien.jpg" alt="" style="width: 110px; transform: rotate(-18deg) translateY(40px); --pick-rot:-18deg;">
+                        <img id="flowerItem11" class="flower-item" src="100826/adara.jpg" alt="" style="width: 110px; transform: rotate(0deg) translateY(-20px); --pick-rot:0deg;">
+                        <img id="flowerItem12" class="flower-item" src="100826/micaela.jpg" alt="" style="width: 110px; transform: rotate(18deg) translateY(40px); --pick-rot:18deg;">
                     </div>
 
                     <div id="flowerRow4" class="florwerrow4" style="position: absolute; top: 315px; left: 50%; transform: translateX(-50%); width: 340px; height: 90px; display: flex; align-items: flex-end; justify-content: center; gap:40px;">
-                        <img id="flowerItem13" class="flower-item" src="100826/test2.jpg" alt="" style="width: 110px; transform: rotate(-12deg) translateY(20px); --pick-rot:-12deg;">
-                        <img id="flowerItem14" class="flower-item" src="100826/test.jpg" alt="" style="width: 110px; transform: rotate(12deg) translateY(20px); --pick-rot:12deg;">
+                        <img id="flowerItem13" class="flower-item" src="100826/debate.jpg" alt="" style="width: 110px; transform: rotate(-12deg) translateY(20px); --pick-rot:-12deg;">
+                        <img id="flowerItem14" class="flower-item" src="100826/exni.jpg" alt="" style="width: 110px; transform: rotate(12deg) translateY(20px); --pick-rot:12deg;">
                     </div>
 
                     <div id="flowerRow5" class="florwerrow5" style="position: absolute; top: 390px; left: 50%; transform: translateX(-50%); width: 180px; height: 80px; display: flex; align-items: flex-end; justify-content: center;">
-                        <img id="flowerItem15" class="flower-item" src="100826/test.jpg" alt="" style="width: 110px; transform: rotate(0deg); --pick-rot:0deg;">
+                        <img id="flowerItem15" class="flower-item" src="100826/marie.jpg" alt="" style="width: 110px; transform: rotate(0deg); --pick-rot:0deg;">
                     </div>
                 </div>
                 <img src="elements/boquet.svg" alt="" style="display: block; width: 900px; height: auto;">
@@ -216,7 +242,10 @@
             </button>
             <div class="letter-panel">
                 <div id="letterBG" class="letter-bg">
-                    <embed id="letterEmbed" class="letter-embed" src="" type="text/html" />
+                    <embed id="letterEmbed" class="letter-embed" src="" type="text/html" width="800" height="500" />
+                </div>
+                <div id="letterPhotoFrame" class="letter-photo-frame" hidden>
+                    <img id="letterPhoto" alt="">
                 </div>
                 <img id="letterFlowerPreview" class="letter-flower-preview" src="" alt="">
             </div>
@@ -224,7 +253,6 @@
 
         <script>
             let clickCount = 0;
-            let openDelayTimer = null;
             let activeLetterIndex = null;
 
             const clickBox = document.getElementById('giftBox');
@@ -234,6 +262,8 @@
             triggerMain.classList.add('flowers-locked');
             const letterOverlay = document.getElementById('letterOverlay');
             const letterEmbed = document.getElementById('letterEmbed');
+            const letterPhotoFrame = document.getElementById('letterPhotoFrame');
+            const letterPhoto = document.getElementById('letterPhoto');
             const letterFlowerPreview = document.getElementById('letterFlowerPreview');
             const letterBackButton = document.getElementById('letterBackButton');
             const flowerItems = document.querySelectorAll('.flower-item');
@@ -249,7 +279,7 @@
             }
 
             function applyState(stateClass) {
-                clickBox.classList.remove('state-one', 'state-two', 'state-three', 'state-four', 'is-open');
+                clickBox.classList.remove('state-one', 'state-two', 'state-three', 'is-open');
                 void clickBox.offsetWidth;
                 clickBox.classList.add(stateClass);
             }
@@ -266,6 +296,13 @@
                 letterEmbed.src = finalSrc;
                 letterFlowerPreview.src = flowerItems[letterIndex].src;
                 letterFlowerPreview.alt = `Flower ${letterIndex + 1}`;
+                const flowerName = flowerItems[letterIndex].getAttribute('src').split('/').pop().replace(/\.[^.]+$/, '');
+                letterPhotoFrame.hidden = true;
+                letterPhoto.onload = () => { letterPhotoFrame.hidden = false; };
+                letterPhoto.onerror = () => { letterPhotoFrame.hidden = true; };
+                letterPhoto.src = `100826/photos/img-${flowerName}.jpg`;
+                letterPhoto.alt = `${flowerName} photo`;
+                flowerItems[letterIndex].classList.add('is-letter-open-hidden');
                 letterOverlay.classList.add('visible');
                 letterOverlay.setAttribute('aria-hidden', 'false');
                 triggerMain.style.pointerEvents = 'none';
@@ -276,11 +313,16 @@
                 if (activeLetterIndex !== null) {
                     flowerStates[activeLetterIndex] = 0;
                     saveFlowerStates();
+                    flowerItems[activeLetterIndex].classList.remove('is-letter-open-hidden');
                 }
 
                 letterOverlay.classList.remove('visible');
                 letterOverlay.setAttribute('aria-hidden', 'true');
                 letterEmbed.src = '';
+                letterPhoto.onload = null;
+                letterPhoto.onerror = null;
+                letterPhoto.removeAttribute('src');
+                letterPhotoFrame.hidden = true;
                 triggerMain.style.pointerEvents = 'auto';
                 activeLetterIndex = null;
             }
@@ -294,6 +336,13 @@
 
                 flower.addEventListener('click', () => {
                     if (triggerMain.classList.contains('flowers-locked')) return;
+
+                    const facingAngle = parseFloat(getComputedStyle(flower).getPropertyValue('--pick-rot')) || 0;
+                    const radians = facingAngle * Math.PI / 180;
+                    const x = Math.sin(radians) * 170;
+                    const y = -Math.cos(radians) * 170;
+                    flower.style.setProperty('--pick-x', `${x}px`);
+                    flower.style.setProperty('--pick-y', `${y}px`);
 
                     flowerStates[index] = 1;
                     saveFlowerStates();
@@ -317,31 +366,23 @@
             });
 
             clickBox.addEventListener('click', function() {
-                if (clickBox.classList.contains('is-open')) return;
+                if (clickBox.classList.contains('is-open') || clickCount >= 3) return;
 
                 clickCount += 1;
-                const stateCycle = clickCount % 4;
-
-                if (stateCycle === 1) {
+                if (clickCount === 1) {
                     applyState('state-one');
-                } else if (stateCycle === 2) {
+                } else if (clickCount === 2) {
                     applyState('state-two');
-                } else if (stateCycle === 3) {
+                } else {
                     applyState('state-three');
-                } else if (stateCycle === 0) {
-                    applyState('state-four');
                     triggerCover.classList.add('cover-open');
                     triggerMain.classList.add('main-open');
 
-                    clearTimeout(openDelayTimer);
-                    openDelayTimer = setTimeout(() => {
+                    setTimeout(() => {
                         giftboxBox.addEventListener('animationend', () => {
                             triggerMain.classList.remove('flowers-locked');
                         }, { once: true });
                         clickBox.classList.add('is-open');
-                        setTimeout(() => {
-                            clickBox.classList.remove('state-four');
-                        }, 120);
                     }, 180);
                 }
             });
