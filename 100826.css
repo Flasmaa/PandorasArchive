@@ -115,6 +115,10 @@
 }
 #mainTitle {
     opacity: 0;
+    visibility: hidden;
+}
+#mainTitle.main-open {
+    visibility: visible;
 }
 #main {
     position: relative;
