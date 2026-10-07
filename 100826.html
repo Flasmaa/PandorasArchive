@@ -7,15 +7,10 @@
         <script>
             window.onload = function() {
                 var body = document.getElementById('page-body');
-                body.style.backgroundImage = "url('bg/bg100826.jpg')";
+                body.style.backgroundImage = "url('bg/bg100826.png')";
                 body.style.backgroundSize = "cover";
-                body.style.backgroundPosition = 'center 0';
+                body.style.backgroundPosition = 'center -250px';
             };
-            window.addEventListener('scroll', function() {
-                var body = document.getElementById('page-body');
-                var speed = 0.5 ; 
-                body.style.backgroundPosition = 'center ' + (window.scrollY * speed) + 'px';
-        });
         </script>
         <style>
             .fixed-back-letter {
@@ -36,7 +31,6 @@
                 transition: transform 0.2s ease, filter 0.2s ease;
                 user-select: none;
                 position: relative;
-                z-index: 10;
                 pointer-events: auto !important;
                 display: block;
                 flex-shrink: 0;
@@ -53,7 +47,7 @@
             }
             .flower-item:hover {
                 transform: scale(1.04);
-                filter: brightness(1.04);
+                filter: brightness(1.04) drop-shadow(0 5px 5px rgba(0, 0, 0, 0.35));
             }
             .flower-item.is-picked {
                 pointer-events: none;
@@ -182,15 +176,18 @@
                 height: auto;
                 width: auto;
             }
+            .bg-blur-overlay {
+                position: fixed;
+                inset: 0;
+                backdrop-filter: blur(0px);
+                -webkit-backdrop-filter: blur(0px);
+                pointer-events: none;
+                z-index: 0;
+            }
         </style>
         <title>100826</title>
     </head>
     <body id="page-body">
-        <h1>DEMO ONLY</h1>
-        <p style="z-index: 4">TEST LANG TO PRE</p>
-        <p style="z-index: 4">click mo ung box</p>
-        <p style="z-index: 4">click mo ung bulaklak</p>
-        <p style="z-index: 4">medyo buggy ung giftbox pero it works</p>
         <div class="bg-blur-overlay" aria-hidden="true"></div>
         <div id="giftBox" class="giftbox">
             <div id="giftBoxInner" class="giftbox-inner">
@@ -199,40 +196,48 @@
             </div>
         </div>
         <img id="cover" class=""src="elements/transparent cover.png" alt="">
+        <br><Br><br><br><br><br>
+        <div id="mainTitle" class="maintitle" style="transform: translateX(260px);">
+            <h1><span style="font-family:'Para'">15</span> Letters from<br><span style="font-family: 'Para'">15</span> people that love you</h1>
+            <br><br><br>
+            <p style="text-align: center">(Scroll Down)</p>
+            <p style="text-align: center">Click the Flowers!</p>
+        </div>
         <div id="main" class="" style="position: relative; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
-            <div style="position: relative; display: inline-block;">
-                <div id="fl" class="fl" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 4; pointer-events: auto; transform: translateY(px);">
-                    <div id="flowerRow1" class="florwerrow1" style="position: absolute; top: 0px; left: 50%; transform: translateX(-50%); width: 720px; height: 170px; display: flex; align-items: flex-end; justify-content: center; gap: 35px;">
-                        <img id="flowerItem1" class="flower-item" src="100826/von.png" alt="" style="width: 110px; transform: rotate(-24deg) translateY(90px); margin-right:10px; --pick-rot:-24deg;">
-                        <img id="flowerItem2" class="flower-item" src="100826/chloe.png" alt="" style="width: 110px; transform: rotate(-10deg) translateY(35px); --pick-rot:-10deg;">
-                        <img id="flowerItem3" class="flower-item" src="100826/yran.jpg" alt="" style="width: 110px; transform: rotate(0deg); --pick-rot:0deg;">
-                        <img id="flowerItem4" class="flower-item" src="100826/teo.jpg" alt="" style="width: 110px; transform: rotate(12deg) translateY(35px); --pick-rot:12deg;">
-                        <img id="flowerItem5" class="flower-item" src="100826/leira.jpg" alt="" style="width: 110px; transform: rotate(24deg) translateY(90px); margin-left:10px; --pick-rot:24deg;">
+            <div style="position: relative; display: inline-block; transform: translateY(0px) rotate(18deg) scale(0.92);">
+                <div id="fl" class="fl" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 4; pointer-events: auto; transform: translateY(12px) translateX(8px) rotate(-1deg);">
+                    <div id="flowerRow1" class="florwerrow1" style="position: absolute; top: 0px; left: 50%; transform: translateX(-50%); width: 720px; height: 170px; display: flex; align-items: flex-end; justify-content: center; gap: 42px;">
+                        <img id="flowerItem1" class="flower-item" src="100826/von.png" alt="" style="width: 150px; transform: rotate(-24deg) translateY(120px); margin-right:10px; --pick-rot:-24deg;">
+                        <img id="flowerItem2" class="flower-item" src="100826/chloe.png" alt="" style="width: 150px; transform: rotate(-10deg) translateY(65px); --pick-rot:-10deg;">
+                        <img id="flowerItem3" class="flower-item" src="100826/yran.jpg" alt="" style="width: 150px; transform: rotate(0deg) translateY(45px); --pick-rot:0deg;">
+                        <img id="flowerItem4" class="flower-item" src="100826/teo.png" alt="" style="width: 150px; transform: rotate(12deg) translateY(65px); --pick-rot:12deg;">
+                        <img id="flowerItem5" class="flower-item" src="100826/leira.png" alt="" style="width: 150px; transform: rotate(24deg) translateY(120px); margin-left:10px; --pick-rot:24deg;">
                     </div>
 
-                    <div id="flowerRow2" class="florwerrow2" style="position: absolute; top: 120px; left: 50%; transform: translateX(-50%); width: 620px; height: 140px; display: flex; align-items: flex-end; justify-content: center; gap: 18px;">
-                        <img id="flowerItem6" class="flower-item" src="100826/rhian.jpg" alt="" style="width: 110px; transform: rotate(-24deg) translateY(50px); --pick-rot:-24deg;">
-                        <img id="flowerItem7" class="flower-item" src="100826/liana.jpg" alt="" style="width: 110px; transform: rotate(-10deg) translateY(-5px); --pick-rot:-10deg;">
-                        <img id="flowerItem8" class="flower-item" src="100826/jeann.jpg" alt="" style="width: 110px; transform: rotate(10deg) translateY(-5px); --pick-rot:10deg;">
-                        <img id="flowerItem9" class="flower-item" src="100826/king.jpg" alt="" style="width: 110px; transform: rotate(24deg) translateY(50px); --pick-rot:24deg;">
+                    <div id="flowerRow2" class="florwerrow2" style="position: absolute; top: 120px; left: 50%; transform: translateX(-50%) translateY(20px); width: 620px; height: 140px; display: flex; align-items: flex-end; justify-content: center; gap: 22px;">
+                        <img id="flowerItem6" class="flower-item" src="100826/rhian.jpg" alt="" style="width: 150px; transform: rotate(-24deg) translateY(50px); --pick-rot:-24deg;">
+                        <img id="flowerItem7" class="flower-item" src="100826/liana.png" alt="" style="width: 150px; transform: rotate(-10deg) translateY(-5px); --pick-rot:-10deg;">
+                        <img id="flowerItem8" class="flower-item" src="100826/jeann.png" alt="" style="width: 150px; transform: rotate(10deg) translateY(-5px); --pick-rot:10deg;">
+                        <img id="flowerItem9" class="flower-item" src="100826/king.png" alt="" style="width: 150px; transform: rotate(24deg) translateY(50px); --pick-rot:24deg;">
                     </div>
                     
                     <div id="flowerRow3" class="florwerrow3" style="position: absolute; top: 220px; left: 50%; transform: translateX(-50%); width: 500px; height: 120px; display: flex; align-items: flex-end; justify-content: center; gap: 60px;">
-                        <img id="flowerItem10" class="flower-item" src="100826/dashien.jpg" alt="" style="width: 110px; transform: rotate(-18deg) translateY(40px); --pick-rot:-18deg;">
-                        <img id="flowerItem11" class="flower-item" src="100826/adara.jpg" alt="" style="width: 110px; transform: rotate(0deg) translateY(-20px); --pick-rot:0deg;">
-                        <img id="flowerItem12" class="flower-item" src="100826/micaela.jpg" alt="" style="width: 110px; transform: rotate(18deg) translateY(40px); --pick-rot:18deg;">
+                        <img id="flowerItem10" class="flower-item" src="100826/dashien.jpg" alt="" style="width: 150px; transform: rotate(-18deg) translateY(40px); --pick-rot:-18deg;">
+                        <img id="flowerItem11" class="flower-item" src="100826/adara.jpg" alt="" style="width: 150px; transform: rotate(0deg) translateY(-20px); --pick-rot:0deg;">
+                        <img id="flowerItem12" class="flower-item" src="100826/micaela.jpg" alt="" style="width: 150px; transform: rotate(18deg) translateY(40px); --pick-rot:18deg;">
                     </div>
 
                     <div id="flowerRow4" class="florwerrow4" style="position: absolute; top: 315px; left: 50%; transform: translateX(-50%); width: 340px; height: 90px; display: flex; align-items: flex-end; justify-content: center; gap:40px;">
-                        <img id="flowerItem13" class="flower-item" src="100826/debate.jpg" alt="" style="width: 110px; transform: rotate(-12deg) translateY(20px); --pick-rot:-12deg;">
-                        <img id="flowerItem14" class="flower-item" src="100826/exni.jpg" alt="" style="width: 110px; transform: rotate(12deg) translateY(20px); --pick-rot:12deg;">
+                        <img id="flowerItem13" class="flower-item" src="100826/debate.jpg" alt="" style="width: 150px; transform: rotate(-12deg) translateY(20px); --pick-rot:-12deg;">
+                        <img id="flowerItem14" class="flower-item" src="100826/exni.jpg" alt="" style="width: 150px; transform: rotate(12deg) translateY(20px); --pick-rot:12deg;">
                     </div>
 
-                    <div id="flowerRow5" class="florwerrow5" style="position: absolute; top: 390px; left: 50%; transform: translateX(-50%); width: 180px; height: 80px; display: flex; align-items: flex-end; justify-content: center;">
-                        <img id="flowerItem15" class="flower-item" src="100826/marie.jpg" alt="" style="width: 110px; transform: rotate(0deg); --pick-rot:0deg;">
+                    <div id="flowerRow5" class="florwerrow5" style="position: absolute; top: 390px; left: 50%; transform: translateX(-50%) translateY(85px); width: 180px; height: 80px; display: flex; align-items: flex-end; justify-content: center;">
+                        <img id="flowerItem15" class="flower-item" src="100826/test.jpg" alt="" style="width: 150px; transform: rotate(0deg); --pick-rot:0deg;">
                     </div>
                 </div>
-                <img src="elements/boquet.svg" alt="" style="display: block; width: 900px; height: auto;">
+                <img src="elements/100826boquet/base.png" alt="" style="position: relative; z-index: 3; display: block; width: 900px; height: auto; filter: drop-shadow(-14px 20px 25px rgba(0, 0, 0, 0.25));">
+                <img src="elements/100826boquet/cover.png" alt="" style="position: absolute; top: 0; left: 0; z-index: 5; display: block; width: 900px; height: auto; pointer-events: none; filter: drop-shadow(-14px 20px 25px rgba(0, 0, 0, 0.25));">
             </div>
         </div>
         <!--mismong letter -->
@@ -259,6 +264,7 @@
             const giftboxBox = clickBox.querySelector('.box');
             const triggerCover = document.getElementById('cover');
             const triggerMain = document.getElementById('main');
+            const mainTitle = document.getElementById('mainTitle');
             triggerMain.classList.add('flowers-locked');
             const letterOverlay = document.getElementById('letterOverlay');
             const letterEmbed = document.getElementById('letterEmbed');
@@ -377,6 +383,7 @@
                     applyState('state-three');
                     triggerCover.classList.add('cover-open');
                     triggerMain.classList.add('main-open');
+                    mainTitle.classList.add('main-open');
 
                     setTimeout(() => {
                         giftboxBox.addEventListener('animationend', () => {

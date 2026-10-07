@@ -113,6 +113,9 @@
     animation: cover-open 5s forwards;
     user-select: none;
 }
+#mainTitle {
+    opacity: 0;
+}
 #main {
     position: relative;
     display: flex;

@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="stylesbase.css">
-<head>
-  <meta charset="UTF-8" />
-  <style>
-    body {
-      background: transparent;
-      opacity: 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="letter">
-        <h1>test1234</h1>
-  </div>
-</body>
+    <link rel="stylesheet" href="100826styles.css">
+    <style>
+      @font-face {
+        font-family: 'StayWithMe';
+        src: url('font/Stay With Me.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Bonskin';
+        src: url('font/Bonskin.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'SmothKiwi';
+        src: url('font/Smoth Kiwi.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+      }
+      p.introduction {
+        font-family: 'Bonskin', sans-serif;
+        color: rgb(0, 0, 0);
+        margin: 0 18%;
+        font-size: 30px
+      }
+      p {
+        font-family: 'SmothKiwi', sans-serif;
+        color: rgb(0, 0, 0);
+        margin: 0 18%;
+        font-size: 24px
+      }
+      p.salutation {
+        font-family: 'Bonskin', sans-serif;
+        color: rgb(22, 0, 16);
+        margin: 0 18%;
+        font-size: 30px;
+        text-align: right;
+      }
+      body {
+        background: transparent;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+    </style>
+    <head>
+      <meta charset="UTF-8" />
+    </head>
+    <body>
+      <div class="letter">
+        <br><br>
+        <p class="introduction">To: <b>Xyrene</b></p>
+        <br>
+        <p></p>
+        <br>
+        <p class="salutation">From: <b>Von</b></p>
+        <br>
+      </div>
+  </body>
 </html>
