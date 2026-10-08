@@ -120,6 +120,29 @@
 #mainTitle.main-open {
     visibility: visible;
 }
+
+@media (max-width: 480px) {
+    #mainTitle {
+        transform: none !important;
+    }
+
+    #main > div {
+        zoom: 0.4;
+    }
+}
+
+@media (max-width: 420px) {
+    #main > div {
+        zoom: 0.35;
+    }
+}
+
+@media (max-width: 380px) {
+    #main > div {
+        zoom: 0.32;
+    }
+}
+
 #main {
     position: relative;
     display: flex;

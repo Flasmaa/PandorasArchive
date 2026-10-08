@@ -16,6 +16,11 @@ body {
   margin: 0;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 #page-body {
   min-height: 100vh;
   background: url('img/bg0.jpg') center 0 / cover no-repeat scroll;
